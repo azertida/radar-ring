@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Radar Ring</title>
+<meta name="description" content="État du trafic R0 : Ring Est (Groenendaal–Woluwe) et Ring Ouest (Drogenbos–Halle)">
+<meta name="theme-color" content="#14161A">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Radar Ring">
+<link rel="apple-touch-icon" href="icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=JetBrains+Mono:wght@600;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --asphalte: #14161A;
+    --panneau: #0A4C95;      /* bleu signalisation */
+    --liseré: #2A2E36;
+    --texte: #F2F3F5;
+    --texte-sourd: #9AA1AC;
+    --vert: #1FA34A;
+    --orange: #E8890C;
+    --rouge: #D42B2B;
+    --gris: #4A505A;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { overflow-x: hidden; max-width: 100%; }
+  body {
+    font-family: 'Atkinson Hyperlegible', system-ui, sans-serif;
+    background: var(--asphalte);
+    color: var(--texte);
+    min-height: 100vh;
+    padding: max(16px, env(safe-area-inset-top)) 14px 24px;
+  }
+  header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 6px;
+  }
+  h1 {
+    font-size: 1.35em;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+  h1 .r0 {
+    background: var(--panneau);
+    border: 2px solid var(--texte);
+    border-radius: 6px;
+    padding: 1px 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 800;
+    font-size: 0.85em;
+    vertical-align: 2px;
+  }
+  #fraicheur {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8em;
+    color: var(--texte-sourd);
+  }
+  #fraicheur.perime { color: var(--orange); font-weight: 600; }
+  #avertissement {
+    display: none;
+    background: var(--gris);
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 0.85em;
+    margin-bottom: 12px;
+  }
+  section { margin-top: 18px; }
+  .titre-segment {
+    font-size: 0.8em;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--texte-sourd);
+    margin-bottom: 8px;
+    padding-left: 2px;
+  }
+  .bloc {
+    border-radius: 14px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+    border: 1px solid var(--liseré);
+    background: #1B1E24;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 4px 14px;
+    border-left: 10px solid var(--gris);
+  }
+  .bloc.vert   { border-left-color: var(--vert); }
+  .bloc.orange { border-left-color: var(--orange); }
+  .bloc.rouge  { border-left-color: var(--rouge); }
+  .direction {
+    font-size: 1.1em;
+    font-weight: 700;
+  }
+  .vitesse {
+    grid-row: span 2;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 800;
+    font-size: 2.4em;
+    line-height: 1;
+    text-align: right;
+  }
+  .vitesse small {
+    display: block;
+    font-size: 0.32em;
+    font-weight: 600;
+    color: var(--texte-sourd);
+    letter-spacing: 0.08em;
+  }
+  .bloc.vert .vitesse   { color: var(--vert); }
+  .bloc.orange .vitesse { color: var(--orange); }
+  .bloc.rouge .vitesse  { color: var(--rouge); }
+  .detail {
+    font-size: 0.82em;
+    color: var(--texte-sourd);
+  }
+  .detail .alerte { color: var(--texte); font-weight: 700; }
+  #erreur {
+    display: none;
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--texte-sourd);
+  }
+  footer {
+    margin-top: 26px;
+    text-align: center;
+    font-size: 0.72em;
+    color: var(--texte-sourd);
+  }
+  footer a { color: var(--texte-sourd); }
+</style>
+</head>
+<body>
+<header>
+  <h1><span class="r0">R0</span> Radar Ring</h1>
+  <div id="fraicheur">…</div>
+</header>
+<div id="avertissement"></div>
+<div id="contenu"></div>
+<div id="erreur">Impossible de charger les données.<br>Réessaie dans une minute.</div>
+<footer>
+  Données : boucles de comptage MIV — Vlaams Verkeerscentrum (open data).<br>
+  Vitesses harmoniques pondérées, véhicules classes 2–5.
+</footer>
+
+<script>
+// ---- Configuration -------------------------------------------------------
+const SEUILS = { rougeMin: 40, rougeMoy: 50, orangeMin: 65, orangeMoy: 80 };
+const PERIME_MIN = 25; // au-delà : données considérées anciennes
+
+const SEGMENTS = [
+  { titre: 'Ring Est · Groenendaal ↔ Woluwe', blocs: [
+      { cle: 'est_R0000001', direction: '→ Woluwe / Zaventem' },
+      { cle: 'est_R0000002', direction: '→ Groenendaal' },
+  ]},
+  { titre: 'Ring Ouest · Ruisbroek ↔ Halle', blocs: [
+      { cle: 'ouest_R0000001', direction: '→ Halle / Wallonie' },
+      { cle: 'ouest_R0000002', direction: '→ Bruxelles (Anderlecht)' },
+  ]},
+];
+
+// ---- Verdict --------------------------------------------------------------
+function verdict(seg) {
+  const min = seg.point_le_plus_lent.vitesse;
+  const moy = seg.vitesse_moyenne;
+  if (min < SEUILS.rougeMin || moy < SEUILS.rougeMoy) return 'rouge';
+  if (min < SEUILS.orangeMin || moy < SEUILS.orangeMoy) return 'orange';
+  return 'vert';
+}
+
+function ligneDetail(seg, etat) {
+  const p = seg.point_le_plus_lent;
+  if (etat === 'vert') return 'Fluide sur tout le tronçon';
+  return `Ralenti : <span class="alerte">${p.vitesse} km/h</span> — ${p.naam}`;
+}
+
+// ---- Rendu ----------------------------------------------------------------
+function afficher(data) {
+  const contenu = document.getElementById('contenu');
+  contenu.innerHTML = '';
+
+  for (const groupe of SEGMENTS) {
+    const section = document.createElement('section');
+    section.innerHTML = `<div class="titre-segment">${groupe.titre}</div>`;
+
+    for (const b of groupe.blocs) {
+      const seg = data.segments[b.cle];
+      const bloc = document.createElement('div');
+      if (!seg) {
+        bloc.className = 'bloc';
+        bloc.innerHTML = `
+          <div class="direction">${b.direction}</div>
+          <div class="vitesse">—</div>
+          <div class="detail">Pas de mesure</div>`;
+      } else {
+        const etat = verdict(seg);
+        bloc.className = 'bloc ' + etat;
+        bloc.innerHTML = `
+          <div class="direction">${b.direction}</div>
+          <div class="vitesse">${seg.vitesse_moyenne}<small>km/h moy.</small></div>
+          <div class="detail">${ligneDetail(seg, etat)}</div>`;
+      }
+      section.appendChild(bloc);
+    }
+    contenu.appendChild(section);
+  }
+
+  // Fraîcheur
+  const pub = new Date(data.publicatie);
+  const ageMin = Math.round((Date.now() - pub.getTime()) / 60000);
+  const f = document.getElementById('fraicheur');
+  f.textContent = pub.toLocaleTimeString('fr-BE', { hour: '2-digit', minute: '2-digit' });
+  const avert = document.getElementById('avertissement');
+  if (ageMin > PERIME_MIN) {
+    f.classList.add('perime');
+    avert.style.display = 'block';
+    avert.textContent = `⚠︎ Données d'il y a ${ageMin} min — le cron GitHub a peut-être du retard.`;
+  } else {
+    f.classList.remove('perime');
+    avert.style.display = 'none';
+  }
+}
+
+// ---- Chargement -----------------------------------------------------------
+async function charger() {
+  try {
+    const resp = await fetch(`./ring.json?t=${Date.now()}`, { cache: 'no-store' });
+    if (!resp.ok) throw new Error(resp.status);
+    afficher(await resp.json());
+    document.getElementById('erreur').style.display = 'none';
+  } catch (e) {
+    document.getElementById('erreur').style.display = 'block';
+  }
+}
+
+charger();
+// Rafraîchit si l'app revient au premier plan (usage type : ouverture avant départ)
+document.addEventListener('visibilitychange', () => {
+  if (!document.hidden) charger();
+});
+</script>
+</body>
+</html>
