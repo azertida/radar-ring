@@ -1,0 +1,28 @@
+name: Radar Ring - collecte MIV
+
+on:
+  schedule:
+    # Toutes les 10 min (offset :07), 5h-21h UTC = 6h/7h-22h/23h heure belge, lun-ven
+    - cron: '7,17,27,37,47,57 5-21 * * 1-5'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  collecte:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Collecte MIV
+        run: python3 collecte_ring.py
+
+      - name: Commit ring.json
+        run: |
+          git config user.name "radar-ring-bot"
+          git config user.email "actions@github.com"
+          git add ring.json
+          git diff --cached --quiet || git commit -m "MAJ ring.json"
+          git push
