@@ -1,227 +1,227 @@
 {
- "publicatie": "2026-08-17T13:56:42.281+02:00",
+ "publicatie": "2026-08-17T14:54:32.017+02:00",
  "segments": {
   "est_R0000001": {
    "segment": "est",
    "ident8": "R0000001",
    "vitesse_moyenne": 78,
    "point_le_plus_lent": {
-    "naam": "R0 fronton 4armen kmpt 24,2",
-    "vitesse": 68,
-    "kmp": 24.248
+    "naam": "4-Armentunnel snede kmpt 24,5 ri Noord",
+    "vitesse": 64,
+    "kmp": 24.542
    },
    "emplacements_actifs": 16,
    "detail": [
     {
      "kmp": 17.879,
      "naam": "complex Groenendaal",
-     "vitesse": 76,
-     "vehicules_min": 22
+     "vitesse": 84,
+     "vehicules_min": 23
     },
     {
      "kmp": 19.997,
      "naam": "Complex Hoeilaart deel 1",
-     "vitesse": 83,
-     "vehicules_min": 35
+     "vitesse": 92,
+     "vehicules_min": 31
     },
     {
      "kmp": 21.398,
      "naam": "R0 Snede 21.4",
-     "vitesse": 89,
-     "vehicules_min": 47
+     "vitesse": 86,
+     "vehicules_min": 30
     },
     {
      "kmp": 21.764,
      "naam": "Leonard Fronton Zuid",
      "vitesse": 79,
-     "vehicules_min": 30
+     "vehicules_min": 21
     },
     {
      "kmp": 22.045,
      "naam": "Knooppunt Leonard",
-     "vitesse": 74,
-     "vehicules_min": 26
+     "vitesse": 72,
+     "vehicules_min": 24
     },
     {
      "kmp": 22.445,
      "naam": "Leonard Fronton Noord",
-     "vitesse": 70,
-     "vehicules_min": 27
+     "vitesse": 67,
+     "vehicules_min": 29
     },
     {
      "kmp": 22.703,
      "naam": "R0 kmpt 22,7 dubbele seinbrug",
-     "vitesse": 71,
-     "vehicules_min": 61
+     "vitesse": 75,
+     "vehicules_min": 60
     },
     {
      "kmp": 23.297,
      "naam": "R0 kmpt 23,3 dubbele seinbrug",
-     "vitesse": 82,
-     "vehicules_min": 69
+     "vitesse": 84,
+     "vehicules_min": 56
     },
     {
      "kmp": 23.809,
      "naam": "R0 kmpt 23,7 dubbele seinbrug",
-     "vitesse": 76,
-     "vehicules_min": 56
+     "vitesse": 81,
+     "vehicules_min": 44
     },
     {
      "kmp": 24.248,
      "naam": "R0 fronton 4armen kmpt 24,2",
-     "vitesse": 68,
-     "vehicules_min": 54
+     "vitesse": 66,
+     "vehicules_min": 51
     },
     {
      "kmp": 24.397,
      "naam": "4-Armentunnel snede kmpt 24,4 ri Noord",
-     "vitesse": 71,
-     "vehicules_min": 52
+     "vitesse": 66,
+     "vehicules_min": 51
     },
     {
      "kmp": 24.542,
      "naam": "4-Armentunnel snede kmpt 24,5 ri Noord",
-     "vitesse": 69,
-     "vehicules_min": 51
+     "vitesse": 64,
+     "vehicules_min": 49
     },
     {
      "kmp": 24.809,
      "naam": "R0 fronton 4armen kmpt 24,7",
-     "vitesse": 78,
-     "vehicules_min": 46
+     "vitesse": 70,
+     "vehicules_min": 39
     },
     {
      "kmp": 25.025,
      "naam": "complex Tervuren - 4-armen (1) (noordzij",
-     "vitesse": 90,
-     "vehicules_min": 45
+     "vitesse": 86,
+     "vehicules_min": 38
     },
     {
      "kmp": 28.963,
      "naam": "Snede Kraainem",
      "vitesse": 96,
-     "vehicules_min": 40
+     "vehicules_min": 48
     },
     {
      "kmp": 30.272,
      "naam": "Knooppunt St Stevens Woluwe Noord",
-     "vitesse": 85,
-     "vehicules_min": 25
+     "vitesse": 90,
+     "vehicules_min": 26
     }
    ]
   },
   "est_R0000002": {
    "segment": "est",
    "ident8": "R0000002",
-   "vitesse_moyenne": 40,
+   "vitesse_moyenne": 41,
    "point_le_plus_lent": {
-    "naam": "R0 kmpt 26,4 seinbrug tunnel in",
-    "vitesse": 8,
-    "kmp": 26.425
+    "naam": "complex Tervuren - 4-armen (1) (noordzij",
+    "vitesse": 11,
+    "kmp": 25.061
    },
    "emplacements_actifs": 17,
    "detail": [
     {
      "kmp": 17.881,
      "naam": "complex Groenendaal",
-     "vitesse": 85,
-     "vehicules_min": 15
+     "vitesse": 72,
+     "vehicules_min": 27
     },
     {
      "kmp": 19.998,
      "naam": "Complex Hoeilaart deel 1",
-     "vitesse": 95,
-     "vehicules_min": 24
+     "vitesse": 94,
+     "vehicules_min": 27
     },
     {
      "kmp": 22.049,
      "naam": "Knooppunt Leonard",
      "vitesse": 74,
-     "vehicules_min": 22
+     "vehicules_min": 19
     },
     {
      "kmp": 22.447,
      "naam": "Leonard Fronton Noord",
-     "vitesse": 34,
-     "vehicules_min": 22
+     "vitesse": 29,
+     "vehicules_min": 21
     },
     {
      "kmp": 22.704,
      "naam": "R0 kmpt 22,7 dubbele seinbrug",
-     "vitesse": 25,
-     "vehicules_min": 48
+     "vitesse": 26,
+     "vehicules_min": 40
     },
     {
      "kmp": 23.296,
      "naam": "R0 kmpt 23,3 dubbele seinbrug",
-     "vitesse": 28,
-     "vehicules_min": 43
+     "vitesse": 29,
+     "vehicules_min": 41
     },
     {
      "kmp": 23.797,
      "naam": "R0 kmpt 23,7 dubbele seinbrug",
-     "vitesse": 23,
-     "vehicules_min": 24
+     "vitesse": 28,
+     "vehicules_min": 32
     },
     {
      "kmp": 24.251,
      "naam": "R0 fronton 4armen kmpt 24,2",
-     "vitesse": 10,
-     "vehicules_min": 6
+     "vitesse": 14,
+     "vehicules_min": 2
     },
     {
      "kmp": 24.401,
      "naam": "4-Armentunnel snede kmpt 24,4 ri Zuid",
-     "vitesse": 31,
+     "vitesse": 22,
      "vehicules_min": 24
     },
     {
      "kmp": 24.545,
      "naam": "4-Armentunnel snede kmpt 24,5 ri Zuid",
-     "vitesse": 26,
-     "vehicules_min": 28
+     "vitesse": 21,
+     "vehicules_min": 25
     },
     {
      "kmp": 24.679,
      "naam": "4-Armentunnel snede kmpt 24,7 ri Zuid",
-     "vitesse": 20,
+     "vitesse": 16,
      "vehicules_min": 26
     },
     {
      "kmp": 24.798,
      "naam": "R0 fronton 4armen kmpt 24,7",
-     "vitesse": 17,
-     "vehicules_min": 21
+     "vitesse": 25,
+     "vehicules_min": 29
     },
     {
      "kmp": 25.061,
      "naam": "complex Tervuren - 4-armen (1) (noordzij",
-     "vitesse": 21,
-     "vehicules_min": 24
+     "vitesse": 11,
+     "vehicules_min": 16
     },
     {
      "kmp": 25.898,
      "naam": "R0 kmpt 25,8 seinbrug tunnel in",
-     "vitesse": 20,
-     "vehicules_min": 19
+     "vitesse": 17,
+     "vehicules_min": 22
     },
     {
      "kmp": 26.425,
      "naam": "R0 kmpt 26,4 seinbrug tunnel in",
-     "vitesse": 8,
-     "vehicules_min": 20
+     "vitesse": 20,
+     "vehicules_min": 36
     },
     {
      "kmp": 29.741,
      "naam": "Knooppunt St Stevens Woluwe Zuid",
-     "vitesse": 97,
-     "vehicules_min": 22
+     "vitesse": 98,
+     "vehicules_min": 23
     },
     {
      "kmp": 30.398,
      "naam": "Knooppunt St Stevens Woluwe Noord",
-     "vitesse": 93,
-     "vehicules_min": 16
+     "vitesse": 99,
+     "vehicules_min": 26
     }
    ]
   },
@@ -231,7 +231,7 @@
    "vitesse_moyenne": 98,
    "point_le_plus_lent": {
     "naam": "complex Ruisbroek (18)",
-    "vitesse": 95,
+    "vitesse": 96,
     "kmp": 58.953
    },
    "emplacements_actifs": 6,
@@ -239,48 +239,48 @@
     {
      "kmp": 58.953,
      "naam": "complex Ruisbroek (18)",
-     "vitesse": 95,
-     "vehicules_min": 48
+     "vitesse": 96,
+     "vehicules_min": 41
     },
     {
      "kmp": 61.014,
      "naam": "Parking Ruisbroek",
-     "vitesse": 97,
-     "vehicules_min": 53
+     "vitesse": 98,
+     "vehicules_min": 52
     },
     {
      "kmp": 62.841,
      "naam": "complex nr 19 Beersel",
      "vitesse": 96,
-     "vehicules_min": 44
+     "vehicules_min": 67
     },
     {
      "kmp": 65.033,
      "naam": "complex nr 20 Huizingen",
-     "vitesse": 99,
-     "vehicules_min": 57
+     "vitesse": 103,
+     "vehicules_min": 46
     },
     {
      "kmp": 67.202,
      "naam": "complex nr 21 Halle",
-     "vitesse": 97,
-     "vehicules_min": 25
+     "vitesse": 96,
+     "vehicules_min": 47
     },
     {
      "kmp": 69.194,
      "naam": "Halle - grens Walloni",
-     "vitesse": 100,
-     "vehicules_min": 57
+     "vitesse": 101,
+     "vehicules_min": 43
     }
    ]
   },
   "ouest_R0000002": {
    "segment": "ouest",
    "ident8": "R0000002",
-   "vitesse_moyenne": 95,
+   "vitesse_moyenne": 98,
    "point_le_plus_lent": {
     "naam": "complex Ruisbroek (18)",
-    "vitesse": 85,
+    "vitesse": 90,
     "kmp": 58.952
    },
    "emplacements_actifs": 6,
@@ -288,38 +288,38 @@
     {
      "kmp": 58.952,
      "naam": "complex Ruisbroek (18)",
-     "vitesse": 85,
-     "vehicules_min": 69
+     "vitesse": 90,
+     "vehicules_min": 45
     },
     {
      "kmp": 61.012,
      "naam": "Parking Ruisbroek",
-     "vitesse": 91,
-     "vehicules_min": 64
+     "vitesse": 94,
+     "vehicules_min": 51
     },
     {
      "kmp": 62.844,
      "naam": "complex nr 19 Beersel",
      "vitesse": 103,
-     "vehicules_min": 57
+     "vehicules_min": 50
     },
     {
      "kmp": 65.067,
      "naam": "complex nr 20 Huizingen",
-     "vitesse": 97,
-     "vehicules_min": 32
+     "vitesse": 102,
+     "vehicules_min": 20
     },
     {
      "kmp": 67.204,
      "naam": "complex nr 21 Halle",
      "vitesse": 104,
-     "vehicules_min": 42
+     "vehicules_min": 33
     },
     {
      "kmp": 69.202,
      "naam": "Halle - grens Walloni",
-     "vitesse": 100,
-     "vehicules_min": 34
+     "vitesse": 99,
+     "vehicules_min": 44
     }
    ]
   }
