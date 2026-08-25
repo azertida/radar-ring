@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Radar Ring</title>
-<meta name="description" content="État du trafic R0 : Ring Est (Groenendaal–Woluwe) et Ring Ouest (Drogenbos–Halle)">
+<meta name="description" content="État du trafic R0 : Ring Est (Groenendaal–Woluwe) et Ring Ouest (Ruisbroek–Halle)">
 <meta name="theme-color" content="#14161A">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -16,7 +16,6 @@
 <style>
   :root {
     --asphalte: #14161A;
-    --panneau: #0A4C95;      /* bleu signalisation */
     --liseré: #2A2E36;
     --texte: #F2F3F5;
     --texte-sourd: #9AA1AC;
@@ -45,16 +44,6 @@
     font-size: 1.35em;
     font-weight: 700;
     letter-spacing: 0.02em;
-  }
-  h1 .r0 {
-    background: var(--panneau);
-    border: 2px solid var(--texte);
-    border-radius: 6px;
-    padding: 1px 8px;
-    font-family: 'JetBrains Mono', monospace;
-    font-weight: 800;
-    font-size: 0.85em;
-    vertical-align: 2px;
   }
   #fraicheur {
     font-family: 'JetBrains Mono', monospace;
@@ -138,7 +127,7 @@
 </head>
 <body>
 <header>
-  <h1><span class="r0">R0</span> Radar Ring</h1>
+  <h1>Radar Ring</h1>
   <div id="fraicheur">…</div>
 </header>
 <div id="avertissement"></div>
